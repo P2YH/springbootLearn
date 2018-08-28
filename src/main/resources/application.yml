@@ -5,9 +5,9 @@ spring:
 spring:
   profiles: dev
   datasource:
-    url:
+    url: jdbc:mysql://mysql.dev:3358/admin
     username: salt
     password: saltstack
     driverClassName: com.mysql.jdbc.Driver
-  pagehelper.helperDialect: mysql
-  pagehelper.reasonable: true
+pagehelper:
+  reasonable: true

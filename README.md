@@ -1,8 +1,8 @@
 # springbootLearn
 
-## 一分页 Mybatis-PageHelper
+## 分页 Mybatis-PageHelper
 使用Mybatis通用分页插件
-https://github.com/pagehelper/Mybatis-PageHelper
+https://github.com/pagehelper/pagehelper-spring-boot
 ### 1. 引入分页插件
 在pom.xml 中添加如下依赖：
 ```
@@ -13,8 +13,8 @@ https://github.com/pagehelper/Mybatis-PageHelper
 </dependency>
 ```
 ### 2. 配置分页插件
-在application.yml 中添加如下配置：
+在application.yml 中配置参数：常用属性可以通过 IDE 自动提示
 ```
-  pagehelper.helperDialect: mysql
-  pagehelper.reasonable: true
+pagehelper:
+  reasonable: true
 ```
