@@ -9,3 +9,5 @@ spring:
     username: salt
     password: saltstack
     driverClassName: com.mysql.jdbc.Driver
+  pagehelper.helperDialect: mysql
+  pagehelper.reasonable: true

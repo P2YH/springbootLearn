@@ -1,5 +1,7 @@
 package com.yh.admin.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.yh.admin.bean.User;
 import com.yh.admin.common.beans.ResultBean;
 import com.yh.admin.service.UserService;
@@ -23,6 +25,28 @@ public class UserController {
     @GetMapping("/all")
     public ResultBean<List<User>> allUserInfo(){
         return new ResultBean<>(userService.findAll());
+    }
+
+    /**
+     * 分页
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/page")
+    public ResultBean<Page<User>> userPageInfo(int pageNum, int pageSize){
+        return new ResultBean<>(userService.findUsersPage(pageNum, pageSize));
+    }
+
+    /**
+     * 返回带有分页信息的结果
+     * @param pageInfo
+     * @param email
+     * @return
+     */
+    @GetMapping("/page/query")
+    public ResultBean<PageInfo<User>> userPageQuery(PageInfo pageInfo, String email){
+        return new ResultBean<>(userService.findUserPageInfo(pageInfo, email));
     }
 
     //Json

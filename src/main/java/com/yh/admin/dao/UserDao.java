@@ -11,6 +11,9 @@ public interface UserDao {
     @Select("SELECT * FROM user WHERE name=#{name}")
     User findByName(@Param("name") String name);
 
+    @Select("SELECT * FROM user WHERE email=#{email}")
+    List<User> findAllByEmail(@Param("email") String email);
+
     @Select("SELECT * FROM user")
     List<User> findAll();
 
