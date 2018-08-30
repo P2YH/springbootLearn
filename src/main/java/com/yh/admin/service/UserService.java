@@ -2,7 +2,8 @@ package com.yh.admin.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.yh.admin.bean.User;
+import com.yh.admin.bean.condtion.UserCondtion;
+import com.yh.admin.bean.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface UserService {
 
     Page<User> findUsersPage(int pageNum, int pageSize);
 
-    PageInfo findUserPageInfo(PageInfo pageInfo, String email);
+    PageInfo findUserPageInfo(PageInfo pageInfo, UserCondtion userCondtion);
 
     int insertByUser(User user);
 

@@ -1,6 +1,7 @@
 package com.yh.admin.dao;
 
-import com.yh.admin.bean.User;
+import com.yh.admin.bean.condtion.UserCondtion;
+import com.yh.admin.bean.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -11,8 +12,8 @@ public interface UserDao {
     @Select("SELECT * FROM user WHERE name=#{name}")
     User findByName(@Param("name") String name);
 
-    @Select("SELECT * FROM user WHERE email=#{email}")
-    List<User> findAllByEmail(@Param("email") String email);
+    @SelectProvider(type = UserDaoProvider.class, method = "selectByUserCondtion")
+    List<User> findAllByEmail(@Param("po") UserCondtion userCondtion);
 
     @Select("SELECT * FROM user")
     List<User> findAll();

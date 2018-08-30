@@ -2,7 +2,8 @@ package com.yh.admin.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.yh.admin.bean.User;
+import com.yh.admin.bean.condtion.UserCondtion;
+import com.yh.admin.bean.entity.User;
 import com.yh.admin.common.beans.ResultBean;
 import com.yh.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,8 @@ public class UserController {
      * @return
      */
     @GetMapping("/page/query")
-    public ResultBean<PageInfo<User>> userPageQuery(PageInfo pageInfo, String email){
-        return new ResultBean<>(userService.findUserPageInfo(pageInfo, email));
+    public ResultBean<PageInfo<User>> userPageQuery(PageInfo pageInfo, UserCondtion userCondtion){
+        return new ResultBean<>(userService.findUserPageInfo(pageInfo, userCondtion));
     }
 
     //Json

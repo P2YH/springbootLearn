@@ -1,4 +1,4 @@
-package com.yh.admin.bean;
+package com.yh.admin.bean.entity;
 
 import lombok.Data;
 

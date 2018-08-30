@@ -1,6 +1,7 @@
 package com.yh.admin.dao;
 
-import com.yh.admin.bean.User;
+import com.yh.admin.bean.condtion.UserCondtion;
+import com.yh.admin.bean.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
@@ -34,5 +35,35 @@ public class UserDaoProvider {
         return sql.toString();
     }
 
+
+    public String selectByUserCondtion(@Param("po") UserCondtion userCondtion){
+        SQL sql = new SQL(){{
+            SELECT("*");
+            FROM("user");
+
+            if (!StringUtils.isEmpty(userCondtion.getName())){
+                WHERE("name = #{po.name}");
+            }
+            if (!StringUtils.isEmpty(userCondtion.getAddress())){
+                WHERE("address = #{po.address}");
+            }
+            if (!StringUtils.isEmpty(userCondtion.getAge())){
+                WHERE("age = #{po.age}");
+            }
+            if (!StringUtils.isEmpty(userCondtion.getSex())){
+                WHERE("sex = #{po.sex}");
+            }
+            if (!StringUtils.isEmpty(userCondtion.getEmail())){
+                WHERE("email = #{po.email}");
+            }
+            if (!StringUtils.isEmpty(userCondtion.getPhone())){
+                WHERE("phone = #{po.phone}");
+            }
+            if (!StringUtils.isEmpty(userCondtion.getId())){
+                WHERE("id = #{po.id}");
+            }
+        }};
+        return sql.toString();
+    }
 
 }

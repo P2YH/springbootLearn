@@ -3,7 +3,8 @@ package com.yh.admin.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.yh.admin.bean.User;
+import com.yh.admin.bean.condtion.UserCondtion;
+import com.yh.admin.bean.entity.User;
 import com.yh.admin.dao.UserDao;
 import com.yh.admin.service.UserService;
 import org.springframework.stereotype.Component;
@@ -33,8 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageInfo findUserPageInfo(PageInfo pageInfo, String email) {
-        return PageHelper.startPage(pageInfo.getPageNum(), pageInfo.getPageSize()).doSelectPageInfo(() -> userDao.findAllByEmail(email));
+    public PageInfo findUserPageInfo(PageInfo pageInfo, UserCondtion userCondtion) {
+        return PageHelper.startPage(pageInfo.getPageNum(), pageInfo.getPageSize()).doSelectPageInfo(() -> userDao.findAllByEmail(userCondtion));
     }
 
     @Override
