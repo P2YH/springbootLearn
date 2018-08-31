@@ -1,7 +1,7 @@
 ### 配置Log4j2
 > #### 1. 排除Logback依赖
 
-想要使用spring boot默认的Logback意外的日志库，我们需要把它从依赖中排除。  
+想要使用spring boot默认的Logback以外的日志库，我们需要把它从依赖中排除。  
 对于**每一个**像下面这样的starter，***画重点***每一个spring-boot-starter-XX都需要排除logging库。  
 ```xml
 <dependency>
