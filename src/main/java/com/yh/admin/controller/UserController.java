@@ -6,11 +6,13 @@ import com.yh.admin.bean.condtion.UserCondtion;
 import com.yh.admin.bean.entity.User;
 import com.yh.admin.common.beans.ResultBean;
 import com.yh.admin.service.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Log4j2
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -42,11 +44,16 @@ public class UserController {
     /**
      * 返回带有分页信息的结果
      * @param pageInfo
-     * @param email
+     * @param userCondtion
      * @return
      */
     @GetMapping("/page/query")
     public ResultBean<PageInfo<User>> userPageQuery(PageInfo pageInfo, UserCondtion userCondtion){
+        log.debug("userPageQuery Debugging log");
+        log.info("userPageQuery Info log");
+        log.warn("userPageQuery Hey, This is a warning!");
+        log.error("userPageQuery Oops! We have an Error. OK");
+        log.fatal("userPageQuery Damn! Fatal error. Please fix me.");
         return new ResultBean<>(userService.findUserPageInfo(pageInfo, userCondtion));
     }
 
