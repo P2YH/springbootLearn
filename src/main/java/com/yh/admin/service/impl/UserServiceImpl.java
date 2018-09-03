@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.List;
 
+import static com.yh.admin.common.utils.CheckUtil.*;
+
 @Log4j2
 @Component
 public class UserServiceImpl implements UserService {
@@ -37,17 +39,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageInfo findUserPageInfo(PageInfo pageInfo, UserCondtion userCondtion) {
-        log.trace("Trace log");
-        log.debug("Debugging log");
-        log.info("Info log");
-        log.warn("Hey, This is a warning!");
-        log.error("Oops! We have an Error. OK");
-        log.fatal("Damn! Fatal error. Please fix me.");
         return PageHelper.startPage(pageInfo.getPageNum(), pageInfo.getPageSize()).doSelectPageInfo(() -> userDao.findAllByEmail(userCondtion));
     }
 
     @Override
     public int insertByUser(User user) {
+        notNull(user.getName(), "user.name is null");
         return userDao.insertByUser(user);
     }
 
